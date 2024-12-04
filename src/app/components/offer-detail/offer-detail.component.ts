@@ -87,11 +87,10 @@ export class OfferDetailComponent implements OnInit,OnDestroy
   {
     if(this.offForm.valid)
     {
-      const {Titolo,DataInserimento,Descrizione,Azienda,Provincia, SmartWorking, Retribuzione, TipologiaContratto}=this.offForm.value;
-      const date = `${DataInserimento!}`;
+      const {Titolo,Descrizione,Azienda,Provincia, SmartWorking, Retribuzione, TipologiaContratto}=this.offForm.value;
       if(Retribuzione! >0)
       {
-        this.offSrv.modify(this.offer!.id,Titolo!,Descrizione!,date,Azienda!,Provincia!,SmartWorking!,Retribuzione!,TipologiaContratto!);
+        this.offSrv.modify(this.offer!.id,Titolo!,Descrizione!,Azienda!,Provincia!,SmartWorking!,Retribuzione!,TipologiaContratto!);
         this.modalService.dismissAll();
         this.offForm.reset();
       }

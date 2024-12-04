@@ -15,7 +15,6 @@ export class AddOfferComponent implements OnInit,OnDestroy
   offForm=this.fb.group({
     Titolo: ['', Validators.required],
     Descrizione:['', Validators.required],
-    DataInserimento: [this.date, Validators.required],
     Azienda:['', Validators.required],
     Provincia:['', Validators.required],
     SmartWorking:[false, Validators.required],
@@ -74,11 +73,10 @@ export class AddOfferComponent implements OnInit,OnDestroy
       this.offForm.patchValue({ SmartWorking: false});
     if(this.offForm.valid)
     {
-      const {Titolo,DataInserimento,Descrizione,Azienda,Provincia, SmartWorking, Retribuzione, TipologiaContratto}=this.offForm.value;
-      const date = `${DataInserimento!}`;
+      const {Titolo,Descrizione,Azienda,Provincia, SmartWorking, Retribuzione, TipologiaContratto}=this.offForm.value;
       if(Retribuzione! >0)
       {
-        this.offSrv.add(Titolo!,Descrizione!,date,Azienda!,Provincia!,SmartWorking!,Retribuzione!,TipologiaContratto!);
+        this.offSrv.add(Titolo!,Descrizione!,Azienda!,Provincia!,SmartWorking!,Retribuzione!,TipologiaContratto!);
         this.modalService.dismissAll();
         this.offForm.reset();
       }

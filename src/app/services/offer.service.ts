@@ -3,6 +3,7 @@ import { BehaviorSubject } from 'rxjs';
 import { Offer } from '../entities/offer.entity';
 import { HttpClient } from '@angular/common/http';
 import { isNil, omitBy } from 'lodash';
+import { enviroment } from '../../../collegamento';
 
 export interface OfferFilters
 {
@@ -35,7 +36,7 @@ export class OfferService
 
   fetch()
   {
-    this.http.get<Offer[]>("/api/offers?maxOfferte=5")
+    this.http.get<Offer[]>(`${enviroment.apiUrl}/api/offers?maxOfferte=5`)
       .subscribe(offers=>{
         this._offers$.next(offers);
       });
@@ -45,26 +46,25 @@ export class OfferService
   {
     this.filtri=filters;
     const q=omitBy(filters,isNil);
-    const result =this.http.get<Offer[]>("/api/offers",{params: q});
+    const result =this.http.get<Offer[]>(`${enviroment.apiUrl}/api/offers`,{params: q});
     result.subscribe(offers=>{
       this._offers$.next(offers);
     });
     return result;
   }
 
-  add(title:string,desc:string,date:string, azienda:string,prov:string, smart:boolean,retr:number,tipo:string )
+  add(title:string,desc:string,azienda:string,prov:string, smart:boolean,retr:number,tipo:string )
   {
     const newOffer={
       Titolo:title,
       DescrizioneBreve: desc,
-      DataInserimento: new Date(date),
       Azienda: azienda,
       Provincia:prov,
       SmartWorking:smart,
       RetribuzioneLorda:retr,
       TipologiaContratto:tipo
     };
-    this.http.post<Offer>("/api/offers", newOffer)
+    this.http.post<Offer>(`${enviroment.apiUrl}/api/offers`, newOffer)
       .subscribe(addOffer => {
         const tmp = structuredClone(this._offers$.value);
         const index = this._offers$.value.findIndex(offer => offer.id === addOffer.id);
@@ -81,12 +81,11 @@ export class OfferService
       });
   }
   
-  modify(id:string,title:string,desc:string,date:string, azienda:string,prov:string, smart:boolean,retr:number,tipo:string )
+  modify(id:string,title:string,desc:string,azienda:string,prov:string, smart:boolean,retr:number,tipo:string )
   {
     const updateOffer={
       Titolo:title,
       DescrizioneBreve: desc,
-      DataInserimento: new Date(date),
       Azienda: azienda,
       Provincia:prov,
       SmartWorking:smart,
@@ -94,7 +93,7 @@ export class OfferService
       TipologiaContratto:tipo
     }
     console.log(updateOffer);
-    this.http.patch<Offer>(`/api/offers/${id}/modify`,updateOffer)
+    this.http.patch<Offer>(`${enviroment.apiUrl}/api/offers/${id}/modify`,updateOffer)
       .subscribe(updated => {
         const index = this._offers$.value.findIndex(offer => offer.id === id);
         const tmp = structuredClone(this._offers$.value);
@@ -108,7 +107,7 @@ export class OfferService
 
   remove(id:string)
   {
-    this.http.delete<Offer>(`/api/offers/${id}/delete`)
+    this.http.delete<Offer>(`${enviroment.apiUrl}/api/offers/${id}/delete`)
       .subscribe(deleted => {
         const tmp = structuredClone(this._offers$.value);
         const index = this._offers$.value.findIndex(offer => offer.id === id);
