@@ -70,6 +70,8 @@ export class AddOfferComponent implements OnInit,OnDestroy
   
   addOffer()
   {
+    if(this.offForm.getRawValue().SmartWorking === undefined)
+      this.offForm.patchValue({ SmartWorking: false});
     if(this.offForm.valid)
     {
       const {Titolo,DataInserimento,Descrizione,Azienda,Provincia, SmartWorking, Retribuzione, TipologiaContratto}=this.offForm.value;
