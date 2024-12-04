@@ -1,0 +1,107 @@
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-Titolo" id="modal-basic-Titolo">Add Job Offer</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form [formGroup]="offForm">
+			<div class="mb-3">
+				<div class="input-group">
+					<input
+						id="Titolo"
+						class="form-control"
+						name="Titolo"
+                        type="text"
+						formControlName="Titolo"
+						placeholder="Titolo"
+					/>
+				</div>
+                <br>
+				<label for="Descrizione">Descrizione breve</label>
+				<div class="input-group">
+					<textarea
+						id="descrizione"
+						class="form-control"
+						name="descrizione"
+						formControlName="Descrizione">
+					</textarea>
+				</div>
+                <br>
+                <label for="DataInserimento">Data Inserimento</label>
+				<div class="input-group">
+					<input
+						id="DataInserimento"
+						class="form-control"
+						placeholder="yyyy-mm-dd"
+						name="dp"
+						ngbDatepicker
+						#dp="ngbDatepicker"
+						formControlName="DataInserimento"
+						[minDate]="Today()"
+					/>
+					<button class="btn btn-outline-secondary bi bi-calendar3" (click)="dp.toggle()" type="button"></button>
+				</div>
+				<br>
+                <div class="row">
+                    <div class="col sm-2 mb-3">
+						<label for="Azienda">Azienda</label>
+						<div class="input-group">
+							<input
+								id="Azienda"
+								class="form-control"
+								name="Azienda"
+								formControlName="Azienda"
+								type="text"
+							/>
+						</div>
+					</div>
+                    <div class="col sm-2 mb-3">
+						<label for="Provincia">Provincia</label>
+						<div class="input-group">
+							<input
+								id="Provincia"
+								class="form-control"
+								name="Provincia"
+								formControlName="Provincia"
+								type="text"
+							/>
+						</div>
+					</div>
+                    <div class="col sm-2 mb-3">
+						<label for="SmartWorking" class="me-2">Smartworking</label>
+						<div class="form-check form-switch">
+							<input
+								class="form-check-input"
+								type="checkbox"
+								id="SmartWorking"
+								formControlName="SmartWorking"
+							/>
+						</div>
+					</div>
+				</div>
+                <label for="Retribuzione">Retribuzione Lorda</label>
+				<div class="input-group">
+					<input
+                        type="number"
+						id="Retribuzione"
+						class="form-control"
+						formControlName="Retribuzione"
+                        [min]="0"
+					/>
+				</div>
+				<br>
+				<label for="TipologiaContratto" id="TipologiaContratto">Tipo di contratto :</label>
+				<div class="input-group">
+					<select name="tipoContratto" formControlName="TipologiaContratto" class="w-100">
+						<option value="Full time">Full time</option>
+						<option value="Part time">Part time</option>
+					</select>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark w-100" (click)="addOffer()">Save</button>
+	</div>
+</ng-template>
+<button class="btn btn-lg btn-outline-primary w-100" (click)="open(content)">Add Job Offer</button>

@@ -1,0 +1,21 @@
+<div class="card mt-2">
+    <div class="card-body">
+      <h5 class="card-title">{{ offer!.Titolo}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted" >{{offer!.DescrizioneBreve}}</h6>
+      <h6 class="card-subtitle mb-2 text-muted">
+        Data Inserimento: {{offer!.DataInserimento}}
+      </h6>
+      <h6 class="card-subtitle mb-2 text-muted" >
+        Azienda che cerca: {{offer!.Azienda}}&nbsp;
+        Provincia: {{offer!.Provincia}}
+      </h6>
+      <h6 class="card-subtitle mb-2 text-muted item-price">
+        Retribuzione Lorda: {{offer!.RetribuzioneLorda | currency}}
+      </h6>
+      <h6 class="card-subtitle mb-2 text-muted" >
+        Tipo di contratto: {{offer!.TipologiaContratto}}&nbsp;{{isSmartWorking(offer!.SmartWorking)}}
+      </h6>
+      <app-offer-detail [offer]="offer"></app-offer-detail>
+      <app-delete-offer [id]="offer!.id"></app-delete-offer>
+    </div>
+</div>
