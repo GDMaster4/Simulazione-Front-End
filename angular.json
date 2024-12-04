@@ -29,7 +29,7 @@
             "polyfills": [
               "zone.js"
             ],
-          "baseHref": "/Front-End/",
+            "baseHref": "/Simulazione-Front-End/",
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
