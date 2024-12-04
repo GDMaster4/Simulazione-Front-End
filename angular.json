@@ -23,13 +23,13 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/front-end",
+            "outputPath": "dist/Front-End",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
-            "baseHref": "/Simulazione-Front-End/",
+            "baseHref": "/Simulazione Front-End/",
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
