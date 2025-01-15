@@ -1,10 +1,11 @@
 <div class="container mt-5">
     <div class="row">
-        <app-places-filters (filterChange)="applyFilters($event)"></app-places-filters>
+
     </div>
+    <br>
     <div class="row">
         <div class="col-12">
-            <h2 class="mb-4">Events</h2>
+            <h2 class="mb-4">Zones</h2>
             <ng-container *ngIf="(zone$ | async) as zones">
                 <div *ngIf="zones.length; else noEvents">
                     <div *ngFor="let zona of zones" class="card mb-3">

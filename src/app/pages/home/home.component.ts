@@ -14,12 +14,9 @@ import { ZoneService } from '../../services/zone.service';
 })
 export class HomeComponent implements OnInit,OnDestroy
 {
-  protected updateQueryParams$ = new ReplaySubject<PlacesFilters>();
-
-  protected destroyed$ = new Subject<void>();
   zone$= this.zoneSrv.zones$;
-
   currentUser$= this.authSrv.currentUser$;
+  protected destroyed$ = new Subject<void>();
 
   constructor( protected router: Router, protected toastr: ToastrService, protected zoneSrv:ZoneService,
     protected authSrv:AuthService,protected activatedRoute: ActivatedRoute)
@@ -34,16 +31,6 @@ export class HomeComponent implements OnInit,OnDestroy
 
   ngOnInit(): void
   {
-    // this.updateQueryParams$
-    // .pipe(
-    //   takeUntil(this.destroyed$),
-    //   map(filters => omitBy(filters, isNil)),
-    //   map(filters => omitBy(filters, val => val === '')),
-    //   debounceTime(150)
-    // )
-    // .subscribe(filters => {
-    //   this.router.navigate([], {queryParams: filters});
-    // });
     this.activatedRoute.data.subscribe(data => console.log(data));    
   }
 
@@ -51,9 +38,5 @@ export class HomeComponent implements OnInit,OnDestroy
   {
     this.destroyed$.next();
     this.destroyed$.complete();
-  }
-
-  applyFilters(value: PlacesFilters) {
-    this.updateQueryParams$.next(value);
   }
 }
