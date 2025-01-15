@@ -1,1 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #06d117;">
+  <div class="container-fluid">
+    <!-- Logo or Brand Name -->
+    <a class="navbar-brand fw-bold" [routerLink]="['/home']" (click)="home()">
+      HOME
+    </a>
+
+    <!-- Toggler for mobile view -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <!-- <ul class="navbar-nav me-auto">
+        <li class="nav-item" isAuthenticated>
+          <a class="nav-link text-white" [routerLink]="['/ricarica']" (click)="premuto($event)">EVENTI</a>
+        </li>
+        <li class="nav-item" isAuthenticated>
+          <a class="nav-link text-white" [routerLink]="['/add-movimento']" (click)="premuto($event)">INCONTRI</a>
+        </li>
+      </ul> -->
+      <ul class="navbar-nav">
+        <app-nav-user
+            [user]="currentUser$ | async"
+            (logout)="logout()"
+            isAuthenticated>
+        </app-nav-user>
+        <li class="nav-item" *ngIf="!(currentUser$ | async)">
+          <a class="nav-link text-white" [routerLink]="['login']">Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
 <router-outlet></router-outlet>
