@@ -49,16 +49,18 @@ export class ZoneService
     const newCap={
       cap:cap
     }
+    let newId:string="";
     this.http.post<Zone>(`${enviroment.apiUrl}/zone/add`, newCap)
       .subscribe(addZone => {
         const tmp = structuredClone(this._zones$.value);
         tmp.push(addZone);
+        newId=addZone.id;
         this._zones$.next(tmp);
         this.fetch();
       },error => {
         this.toastSrv.error(error);
       }); 
-    return this._zones$.value[this._zones$.value.length - 1].id;
+    return newId;
   }
   
   remove(id:string)
@@ -70,6 +72,7 @@ export class ZoneService
         tmp.splice(index,1);
         console.log(tmp);
         this._zones$.next(tmp);
+        this.fetch();
       }, error => {
         this.toastSrv.error(error);
       });
