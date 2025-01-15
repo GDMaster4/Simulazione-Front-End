@@ -14,6 +14,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { IfAuthenticatedDirective } from './directives/if-authenticated.directive';
 import { AuthInterceptor } from './utils/auth-interceptor';
+import { ZoneService } from './services/zone.service';
+import { PlacesService } from './services/places.service';
+import { NavUserComponent } from './components/nav-user/nav-user.component';
 registerLocaleData(localeIt, 'it-IT');
 
 @NgModule({
@@ -22,6 +25,7 @@ registerLocaleData(localeIt, 'it-IT');
     IfAuthenticatedDirective,
     LoginComponent,
     RegisterComponent,
+    NavUserComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -47,6 +51,8 @@ registerLocaleData(localeIt, 'it-IT');
       useClass: DateParserFormatter
     },
     {provide: HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true},
+    ZoneService,
+    PlacesService
   ],
   bootstrap: [AppComponent]
 })
