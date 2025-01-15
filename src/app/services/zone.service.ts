@@ -58,6 +58,7 @@ export class ZoneService
       },error => {
         this.toastSrv.error(error);
       }); 
+    return this._zones$.value[this._zones$.value.length - 1].id;
   }
   
   remove(id:string)

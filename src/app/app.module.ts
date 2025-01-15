@@ -26,6 +26,7 @@ import { RouterModule } from '@angular/router';
 import { ZonaComponent } from './components/zona/zona.component';
 import { DeleteZonaComponent } from './components/delete-zona/delete-zona.component';
 import { PlacesComponent } from './pages/places/places.component';
+import { AddZonaComponent } from './components/add-zona/add-zona.component';
 registerLocaleData(localeIt, 'it-IT');
 
 @NgModule({
@@ -43,6 +44,7 @@ registerLocaleData(localeIt, 'it-IT');
     ZonaComponent,
     DeleteZonaComponent,
     PlacesComponent,
+    AddZonaComponent,
   ],
   imports: [
     BrowserAnimationsModule,
