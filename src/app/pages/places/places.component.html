@@ -1,8 +1,5 @@
 <div class="container mt-5">
     <div class="row">
-        <app-places-filters (filterChange)="applyFilters($event)"></app-places-filters>
-    </div>
-    <div class="row">
         <div class="col-12">
             <h2 class="mb-4">Places</h2>
             <ng-container *ngIf="(places$ | async) as places">

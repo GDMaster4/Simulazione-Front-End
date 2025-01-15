@@ -49,8 +49,4 @@ export class PlacesComponent
     this.destroyed$.next();
     this.destroyed$.complete();
   }
-
-  applyFilters(value: PlacesFilters) {
-    this.updateQueryParams$.next(value);
-  }
 }
