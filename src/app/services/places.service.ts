@@ -1,8 +1,7 @@
-import { forwardRef, Inject, Injectable } from '@angular/core';
+import { forwardRef, Inject, Injectable, Injector } from '@angular/core';
 import { Place } from '../entities/place.entity';
 import { BehaviorSubject } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { HttpClient, HttpHandler, HttpHeaders } from '@angular/common/http';
 import { enviroment } from '../../../collegamento';
 import { ToastrService } from 'ngx-toastr';
 import { ZoneService } from './zone.service';
@@ -19,11 +18,14 @@ export class PlacesService
 {
   private _places$= new BehaviorSubject<Place[]>([]);
   places$=this._places$.asObservable();
+  private noAuthHttp: HttpClient;
 
-  constructor(protected http:HttpClient, protected zoneSrv:ZoneService, protected router:Router,
-    protected toastSrv:ToastrService
+  constructor(protected http:HttpClient, protected zoneSrv:ZoneService,
+    protected toastSrv:ToastrService, private injector:Injector
   )
   {
+    const httpHandler = this.injector.get(HttpHandler);
+    this.noAuthHttp = new HttpClient(httpHandler);
     this.zoneSrv.zones$
       .subscribe(zones=>{
         if (zones) {
@@ -49,7 +51,7 @@ export class PlacesService
     let latitude:number=0;
     let longitude:number=0;
     let placeName:string="";
-    this.http.get<any>(`https://api.zippopotam.us/it/${cap}`)
+    this.noAuthHttp.get<any>(`/api/${cap}`)
       .subscribe(response => {
         const places=response.places;
         places.forEach((place: { 'place name': string; longitude: any; latitude: any; }) => {

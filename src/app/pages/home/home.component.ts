@@ -26,6 +26,9 @@ export class HomeComponent implements OnInit,OnDestroy
         if(!user) {
           router.navigate(['/login']);
         }
+        else {
+          router.navigate(["/home"])
+        }
       })
   }
 

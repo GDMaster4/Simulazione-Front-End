@@ -19,7 +19,6 @@ import { PlacesService } from './services/places.service';
 import { NavUserComponent } from './components/nav-user/nav-user.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PlaceComponent } from './components/place/place.component';
-import { PlacesFiltersComponent } from './components/places-filters/places-filters.component';
 import { DeletePlaceComponent } from './components/delete-place/delete-place.component';
 import { DeleteAllComponent } from './components/delete-all/delete-all.component';
 import { RouterModule } from '@angular/router';
@@ -38,7 +37,6 @@ registerLocaleData(localeIt, 'it-IT');
     NavUserComponent,
     HomeComponent,
     PlaceComponent,
-    PlacesFiltersComponent,
     DeletePlaceComponent,
     DeleteAllComponent,
     ZonaComponent,
