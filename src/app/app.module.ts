@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbDateAdapter, NgbDateParserFormatter, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import localeIt from '@angular/common/locales/it';
@@ -12,11 +12,14 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { IfAuthenticatedDirective } from './directives/if-authenticated.directive';
+import { AuthInterceptor } from './utils/auth-interceptor';
 registerLocaleData(localeIt, 'it-IT');
 
 @NgModule({
   declarations: [
     AppComponent,
+    IfAuthenticatedDirective,
     LoginComponent,
     RegisterComponent,
   ],
@@ -42,7 +45,8 @@ registerLocaleData(localeIt, 'it-IT');
     {
       provide: NgbDateParserFormatter,
       useClass: DateParserFormatter
-    }
+    },
+    {provide: HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true},
   ],
   bootstrap: [AppComponent]
 })
