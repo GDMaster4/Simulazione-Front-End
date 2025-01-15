@@ -21,6 +21,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { PlaceComponent } from './components/place/place.component';
 import { PlacesFiltersComponent } from './components/places-filters/places-filters.component';
 import { DeletePlaceComponent } from './components/delete-place/delete-place.component';
+import { DeleteAllComponent } from './components/delete-all/delete-all.component';
 registerLocaleData(localeIt, 'it-IT');
 
 @NgModule({
@@ -34,6 +35,7 @@ registerLocaleData(localeIt, 'it-IT');
     PlaceComponent,
     PlacesFiltersComponent,
     DeletePlaceComponent,
+    DeleteAllComponent,
   ],
   imports: [
     BrowserAnimationsModule,

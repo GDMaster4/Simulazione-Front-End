@@ -17,6 +17,7 @@ export class PlacesFiltersComponent implements OnInit,OnDestroy
     zona: ['', {updateOn: 'change'} ]
   });
   zone$=this.zoneSrv.zones$;
+  zoneId:string="";
 
   @Input()
   set filters(value: any | null)
@@ -52,6 +53,7 @@ export class PlacesFiltersComponent implements OnInit,OnDestroy
           zoneId: value.zona!
         });
       });
+    this.zoneId=this.filtersForm.getRawValue().zona ? this.filtersForm.getRawValue().zona! : "";
   }
 
   ngOnDestroy(): void

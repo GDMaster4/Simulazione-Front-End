@@ -3,11 +3,11 @@ import { PlacesService } from '../../services/places.service';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-delete-place',
-  templateUrl: './delete-place.component.html',
-  styleUrl: './delete-place.component.css'
+  selector: 'app-delete-all',
+  templateUrl: './delete-all.component.html',
+  styleUrl: './delete-all.component.css'
 })
-export class DeletePlaceComponent
+export class DeleteAllComponent 
 {
   @Input()
   id:string | null=null;
@@ -42,9 +42,9 @@ export class DeletePlaceComponent
 		}
 	}
   
-  deletePlace()
+  deleteAllPlaces()
   {
-    this.placeSrv.remove(this.id!);
+    this.placeSrv.removeAll(this.id!);
     this.modalService.dismissAll();
   }
 }
