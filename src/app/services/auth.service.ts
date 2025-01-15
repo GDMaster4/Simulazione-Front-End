@@ -38,9 +38,9 @@ export class AuthService
       );
   }
 
-  login(username:string,password:string)
+  login(email:string,password:string)
   {
-    return this.http.post<{user:any,token:string}>(`${enviroment.apiUrl}/login`,{username,password})
+    return this.http.post<{user:any,token:string}>(`${enviroment.apiUrl}/login`,{email,password})
       .pipe(
         tap(res=>this.jwt.setToken(res.token)),
         map(res=>res.user)
@@ -56,12 +56,12 @@ export class AuthService
 
   fetchUser()
   {
-    this.http.get<User>("api/users/me")
+    this.http.get<User>(`${enviroment.apiUrl}/user/me`)
       .subscribe(user=>this._currentUser$.next(user));
   }
   
   fetchUsers()
   {
-    return this.http.get<User[]>("api/users");
+    return this.http.get<User[]>("api/user/users");
   }
 }

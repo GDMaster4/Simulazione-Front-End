@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { forwardRef, Inject, Injectable } from '@angular/core';
 import { Place } from '../entities/place.entity';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -20,7 +20,7 @@ export class PlacesService
   private _places$= new BehaviorSubject<Place[]>([]);
   places$=this._places$.asObservable();
 
-  constructor(protected http:HttpClient,protected zoneSrv:ZoneService, protected router:Router,
+  constructor(protected http:HttpClient, protected zoneSrv:ZoneService, protected router:Router,
     protected toastSrv:ToastrService
   )
   {
@@ -44,8 +44,22 @@ export class PlacesService
     return this.places$;
   }
 
-  add(zoneId:string,placeName:string, longitude:number,latitude:number)
+  add(zoneId:string,cap:string)
   {
+    let latitude:number=0;
+    let longitude:number=0;
+    let placeName:string="";
+    this.http.get<any>(`https://api.zippopotam.us/it/${cap}`)
+      .subscribe(response => {
+        const places=response.places;
+        places.forEach((place: { 'place name': string; longitude: any; latitude: any; }) => {
+          placeName=place['place name'];
+          latitude=latitude;
+          longitude=longitude;
+        });
+      }, error => {
+        this.toastSrv.error(error);
+      });
     const newPlace={
       zone:zoneId,
       placeName:placeName,

@@ -5,12 +5,12 @@
             <div class="input-group">
                 <select formControlName="zona" name="zona" id="zona" class="w-100">
                     <option></option>
-                    <option *ngFor="let zona of zone$ | async" [value]="zona.id">{{ zona.id }}</option>
+                    <option *ngFor="let zona of zone$ | async" [value]="zona.id">{{ zona.cap }}</option>
                 </select>
             </div>
         </div>
     </div>
 </form>
 <div class="col w-100">
-    <app-delete-all [id]="zoneId" *ngIf="zoneId!=''"></app-delete-all>>
+    <app-delete-all [id]="zoneId" *ngIf="zoneId!=''"></app-delete-all>
 </div>

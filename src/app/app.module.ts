@@ -22,6 +22,8 @@ import { PlaceComponent } from './components/place/place.component';
 import { PlacesFiltersComponent } from './components/places-filters/places-filters.component';
 import { DeletePlaceComponent } from './components/delete-place/delete-place.component';
 import { DeleteAllComponent } from './components/delete-all/delete-all.component';
+import { RouterModule } from '@angular/router';
+import { ZonaComponent } from './components/zona/zona.component';
 registerLocaleData(localeIt, 'it-IT');
 
 @NgModule({
@@ -36,6 +38,7 @@ registerLocaleData(localeIt, 'it-IT');
     PlacesFiltersComponent,
     DeletePlaceComponent,
     DeleteAllComponent,
+    ZonaComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -47,6 +50,7 @@ registerLocaleData(localeIt, 'it-IT');
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    RouterModule,
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule
