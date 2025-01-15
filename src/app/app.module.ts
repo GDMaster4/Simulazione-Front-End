@@ -24,6 +24,7 @@ import { DeletePlaceComponent } from './components/delete-place/delete-place.com
 import { DeleteAllComponent } from './components/delete-all/delete-all.component';
 import { RouterModule } from '@angular/router';
 import { ZonaComponent } from './components/zona/zona.component';
+import { DeleteZonaComponent } from './components/delete-zona/delete-zona.component';
 registerLocaleData(localeIt, 'it-IT');
 
 @NgModule({
@@ -39,6 +40,7 @@ registerLocaleData(localeIt, 'it-IT');
     DeletePlaceComponent,
     DeleteAllComponent,
     ZonaComponent,
+    DeleteZonaComponent,
   ],
   imports: [
     BrowserAnimationsModule,
