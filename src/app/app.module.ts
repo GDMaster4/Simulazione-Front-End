@@ -17,6 +17,10 @@ import { AuthInterceptor } from './utils/auth-interceptor';
 import { ZoneService } from './services/zone.service';
 import { PlacesService } from './services/places.service';
 import { NavUserComponent } from './components/nav-user/nav-user.component';
+import { HomeComponent } from './pages/home/home.component';
+import { PlaceComponent } from './components/place/place.component';
+import { PlacesFiltersComponent } from './components/places-filters/places-filters.component';
+import { DeletePlaceComponent } from './components/delete-place/delete-place.component';
 registerLocaleData(localeIt, 'it-IT');
 
 @NgModule({
@@ -26,6 +30,10 @@ registerLocaleData(localeIt, 'it-IT');
     LoginComponent,
     RegisterComponent,
     NavUserComponent,
+    HomeComponent,
+    PlaceComponent,
+    PlacesFiltersComponent,
+    DeletePlaceComponent,
   ],
   imports: [
     BrowserAnimationsModule,
