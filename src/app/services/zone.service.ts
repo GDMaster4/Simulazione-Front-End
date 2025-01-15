@@ -6,6 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
 import { enviroment } from '../../../collegamento';
+import { PlacesService } from './places.service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class ZoneService
   zones$=this._zones$.asObservable();
 
   constructor(protected http:HttpClient,protected authSrv:AuthService, protected router:Router,
-    protected toastSrv:ToastrService
+    protected toastSrv:ToastrService, protected placeSrv:PlacesService
   )
   {
     this.authSrv.currentUser$
@@ -57,6 +58,22 @@ export class ZoneService
       },error => {
         this.toastSrv.error(error);
       });
+    let latitude:number=0;
+    let longitude:number=0;
+    let placeName:string="";
+    this.http.get<any>(`https://api.zippopotam.us/it/${cap}`)
+      .subscribe(response => {
+        const places=response.places;
+        places.forEach((place: { 'place name': string; longitude: any; latitude: any; }) => {
+          placeName=place['place name'];
+          latitude=latitude;
+          longitude=longitude;
+        });
+      }, error => {
+        this.toastSrv.error(error);
+      });
+    const lastZoneId = this._zones$.value[this._zones$.value.length - 1].id;
+    this.placeSrv.add(lastZoneId,placeName,longitude,latitude);    
   }
   
   remove(id:string)
