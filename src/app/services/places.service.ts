@@ -7,6 +7,11 @@ import { enviroment } from '../../../collegamento';
 import { ToastrService } from 'ngx-toastr';
 import { ZoneService } from './zone.service';
 
+export interface PlacesFilters
+{
+  zoneId:string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -22,7 +27,7 @@ export class PlacesService
     this.zoneSrv.zones$
       .subscribe(zones=>{
         if (zones) {
-          zones.forEach(zone=>this.listByZone(zone.id));
+          zones.forEach(zone=>this.listByZone({zoneId:zone.id}));
         }
         else {
           this._places$.next([]);
@@ -30,12 +35,13 @@ export class PlacesService
       })
   }
 
-  listByZone(id:string)
+  listByZone(filters:PlacesFilters)
   {    
-    this.http.get<Place[]>(`${enviroment.apiUrl}/place/${id}`)
-      .subscribe(places=>{
+    const result=this.http.get<Place[]>(`${enviroment.apiUrl}/place/${filters.zoneId}`);
+    result.subscribe(places=>{
         this._places$.next(places);
-      });
+    });
+    return this.places$;
   }
 
   add(zoneId:string,placeName:string, longitude:number,latitude:number)
@@ -64,8 +70,21 @@ export class PlacesService
         const tmp = structuredClone(this._places$.value);
         const index = this._places$.value.findIndex(place => place.id === deleted.id);
         tmp.splice(index,1);
-        console.log(tmp);
         this._places$.next(tmp);
+      }, error => {
+        this.toastSrv.error(error);
+      });
+  }
+
+  removeAll(id:string)
+  {    
+    this.http.delete<Place>(`${enviroment.apiUrl}/place/${id}/all`)
+      .subscribe(deleted => {
+        // const tmp = structuredClone(this._places$.value);
+        // const index = this._places$.value.findIndex(place => place.id === deleted.id);
+        // tmp.splice(index,1);
+        // this._places$.next(tmp);
+        this.listByZone({zoneId:id});
       }, error => {
         this.toastSrv.error(error);
       });

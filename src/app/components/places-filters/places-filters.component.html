@@ -1,0 +1,13 @@
+<form [formGroup]="filtersForm">
+    <div class="row align-items-end">
+        <div class="col w-100">
+            <label for="zona">Zona del movimento: </label>
+            <div class="input-group">
+                <select formControlName="zona" name="zona" id="zona" class="w-100">
+                    <option></option>
+                    <option *ngFor="let zona of zone$ | async" [value]="zona.id">{{ zona.id }}</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</form>
