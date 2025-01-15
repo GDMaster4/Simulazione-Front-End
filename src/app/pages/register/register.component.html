@@ -1,0 +1,161 @@
+<section class="py-3 py-md-3">
+    <div class="container">
+      <div class="row justify-content-center h-100">
+        <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5 col-xxl-4">
+          <div class="card-custom rounded-3 shadow-sm">
+            <div class="card-body">
+              <h1 class="fs-6 fw-bold text-center mb-4">
+                REGISTRATI
+              </h1>
+              <form (ngSubmit)="register()" [formGroup]="registerForm">
+                <div class="row gy-2 overflow-hidden">
+                  <!-- Nome Titolare -->
+                  <div class="col-12">
+                    <div class="form-outline mb-4">
+                      <label class="form-label text-primary green-text fw-bold" for="firstName">Nome</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="firstName"
+                        id="firstName"
+                        placeholder="Inserisci il tuo nome"
+                        required
+                        formControlName="firstName"
+                        [ngClass]="{
+                          'invalid-field':
+                            registerForm.get('firstName')!.invalid &&
+                            registerForm.get('firstName')!.touched
+                        }"
+                      />
+                      <p
+                        class="fs-6 mb-0 text-danger"
+                        *ngIf="
+                          registerForm.get('firstName')?.errors &&
+                          registerForm.get('firstName')?.touched
+                        "
+                      >
+                        Il nome è obbligatorio
+                      </p>
+                    </div>
+                  </div>
+                  <!-- Cognome Titolare -->
+                  <div class="col-12">
+                    <div class="form-outline mb-4">
+                      <label class="form-label text-primary green-text fw-bold" for="lastName">Cognome</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="lastName"
+                        id="lastName"
+                        placeholder="Inserisci il tuo cognome"
+                        required
+                        formControlName="lastName"
+                        [ngClass]="{
+                          'invalid-field':
+                            registerForm.get('lastName')!.invalid &&
+                            registerForm.get('lastName')!.touched
+                        }"
+                      />
+                      <p
+                        class="fs-6 mb-0 text-danger"
+                        *ngIf="
+                          registerForm.get('lastName')?.errors &&
+                          registerForm.get('lastName')?.touched
+                        "
+                      >
+                        Il cognome è obbligatorio
+                      </p>
+                    </div>
+                  </div>
+                  <!-- Email -->
+                  <div class="col-12">
+                    <div class="form-outline mb-4">
+                      <label class="form-label text-primary green-text fw-bold" for="email">E-mail</label>
+                      <input
+                        type="email"
+                        class="form-control"
+                        name="email"
+                        id="email"
+                        placeholder="Inserisci la tua email"
+                        required
+                        formControlName="email"
+                        [ngClass]="{
+                          'invalid-field':
+                            registerForm.get('email')!.invalid &&
+                            registerForm.get('email')!.touched
+                        }"
+                      />
+                      <p
+                        class="fs-6 mb-0 text-danger"
+                        *ngIf="registerForm.get('email')?.errors"
+                      >
+                        Inserisci un'email valida
+                      </p>
+                    </div>
+                  </div>
+                  <!-- Password -->
+                  <div class="col-12">
+                    <div class="form-outline mb-4">
+                      <label class="form-label text-primary green-text fw-bold" for="password">Password</label>
+                      <input
+                        type="password"
+                        class="form-control"
+                        name="password"
+                        id="password"
+                        placeholder="Inserisci la tua password"
+                        required
+                        formControlName="password"
+                      />
+                      <p
+                        class="fs-6 mb-0 text-danger"
+                        *ngIf="
+                          registerForm.get('password')?.errors &&
+                          registerForm.get('password')?.touched
+                        "
+                      >
+                        La password deve contenere almeno 8 caratteri, 1 maiuscola, 1 minuscola, 1 numero e 1 carattere speciale (#?!$%^&*-)
+                      </p>
+                    </div>
+                  </div>
+                  <label for="Conferma" class="form-label text-primary green-text fw-bold">Conferma password</label>
+                  <div class="input-group">
+                      <input
+                          id="Conferma"
+                          class="form-control"
+                          name="Conferma"
+                          type="password"
+                          formControlName="Conferma"
+                          placeholder="Inserisci di nuovo la password"
+                          (input)="controlloTesto()"
+                      />
+                  </div>
+                  <div class="text-danger" *ngIf="errConferma">
+                    {{ errConferma }}
+                  </div>
+                  <!-- Pulsante Iscriviti -->
+                  <div class="col-12">
+                    <div class="d-grid my-3">
+                      <button
+                        class="btn btn-primary btn-block mb-4 w-100"
+                        type="submit"
+                        [disabled]="!registerForm.valid"
+                      >
+                        Registrati
+                      </button>
+                    </div>
+                  </div>
+                  <!-- Link per Login -->
+                  <div class="text-center mt-3">
+                    Hai già un account?
+                    <a [routerLink]="['/login']" class="underline-on-hover">
+                      <span class="fw-bold">Effettua il login</span>
+                    </a>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
