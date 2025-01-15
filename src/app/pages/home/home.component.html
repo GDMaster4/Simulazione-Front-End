@@ -1,0 +1,17 @@
+<div class="container mt-5" *ifAuthenticated>
+    <app-places-filters (filterChange)="applyFilters($event)"></app-places-filters>
+    <ng-container *ngIf="(places$ | async)!.length > 0; else noPlaces">
+        <div class="col-12 d-flex justify-content-center flex-wrap">
+            <div class="movimento-card mb-4" *ngFor="let place of places$ | async">
+                <app-place [place]="place"></app-place>
+            </div>
+        </div>
+    </ng-container>
+    <ng-template #noPlaces>
+        <div class="col-12">
+            <div class="alert alert-warning" role="alert">
+                Non ci sono places da mostrare.
+            </div>
+        </div>
+    </ng-template>
+</div>
