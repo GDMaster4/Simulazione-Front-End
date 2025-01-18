@@ -1,0 +1,48 @@
+.card-custom {
+    background-color: #ffffff; /* Bianco per la card */
+    color: #06d117; /* Viola scuro per il testo nella card */
+    border: 2px solid #06d117; /* Bordo viola scuro */
+    border-radius: 1rem; /* Bordi arrotondati */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Ombra leggera */
+    padding: 2rem;
+}
+  
+.form-control {
+    border: 2px solid #06d117; /* Bordo viola scuro per i campi input */
+    padding: 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    background-color: #ffffff; /* Sfondo bianco */
+    color: #333333;
+}
+  
+.btn-primary {
+    background-color: #06d117; /* Viola chiaro per i pulsanti */
+    color: #ffffff; /* Testo bianco */
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+  
+.btn-primary:hover {
+    background-color: #076604; /* Viola più scuro al passaggio del mouse */
+}
+  
+.underline-on-hover {
+    text-decoration: none;
+    color: #06d117;
+}
+  
+.underline-on-hover:hover {
+    text-decoration: underline;
+}
+  
+  /* Personalizzazione per eventuali messaggi di errore */
+.text-danger {
+    color: red; /* Colore rosso per i messaggi di errore */
+}
+
+.green-text{
+    color:#06d117 !important;
+}

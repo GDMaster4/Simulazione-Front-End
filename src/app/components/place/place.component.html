@@ -1,0 +1,11 @@
+<div class="card mt-2" *ifAuthenticated>
+    <div class="card-body">
+      <h5 class="card-title">{{ place!.placeName}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">Latitudine: {{ place!.latitude}}</h6>
+      <h6 class="card-subtitle mb-2 text-muted">Longitudine: {{ place!.longitude}}</h6>
+      <app-delete-place [id]="place!.id!"></app-delete-place>
+      <a [href]="'https://www.google.com/maps?q=' + place!.latitude + ',' + place!.longitude" target="_blank" class="btn btn-lg btn-outline-secondary w-50 mt-2">
+        Detail place
+      </a>
+    </div>
+</div>

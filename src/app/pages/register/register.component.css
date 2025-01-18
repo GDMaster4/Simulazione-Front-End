@@ -1,0 +1,86 @@
+.container
+{
+  display: flex; /* Attiva Flexbox */
+  justify-content: center; /* Centra orizzontalmente */
+  align-items: center; /* Centra verticalmente */
+  height: 100vh; /* Altezza della viewport */
+}
+
+/* Stile per la card */
+.card-custom {
+  background-color: #ffffff; /* Bianco per la card */
+  color: #06d117; /* Viola scuro per il testo nella card */
+  border: 2px solid #06d117; /* Bordo viola scuro */
+  border-radius: 1rem; /* Bordi arrotondati */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Ombra leggera */
+  padding: 2rem;
+}
+
+h3 {
+  font-weight: 700;
+  color: #06d117; /* Titolo in viola scuro */
+}
+
+.btn-primary {
+  background-color: #06d117; /* Viola chiaro per i pulsanti */
+  color: #ffffff; /* Testo bianco */
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #7b1fa2; /* Viola più scuro al passaggio del mouse */
+}
+
+.form-control {
+  border: 2px solid #06d117; /* Bordo viola scuro per i campi input */
+  padding: 0.75rem;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  background-color: #ffffff; /* Sfondo bianco */
+  color: #333333;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: #4a148c; /* Viola più scuro al focus */
+}
+
+.text-primary {
+  color: #06d117 !important; /* Colore viola scuro per i link e il testo importante */
+}
+
+.text-secondary {
+  color: #b39ddb; /* Colore viola chiaro per i dettagli secondari */
+}
+
+/* Hover underline for link */
+.underline-on-hover {
+  text-decoration: none;
+  color: #1b9a26;
+}
+
+.underline-on-hover:hover {
+  text-decoration: underline;
+}
+
+.rounded-3 {
+  border-radius: 1rem;
+}
+
+/* Styles for the navbar */
+.navbar {
+  background-color: #06d117; /* Sfondo viola scuro */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombra leggera */
+}
+
+.navbar-brand,
+.nav-link {
+  color: #ffffff !important; /* Testo bianco */
+}
+
+.nav-link:hover {
+  color: #b39ddb; /* Viola chiaro al passaggio del mouse */
+}

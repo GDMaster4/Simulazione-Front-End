@@ -1,0 +1,58 @@
+<section class="py-3 py-md-3 vh-100 d-flex align-items-center" >
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-4 col-md-8 col-sm-12">
+          <div class="card-custom round ed-3 shadow-sm">
+            <h3 class="text-center mb-4 fw-bold">PLACES</h3>
+            <form (ngSubmit)="login()" [formGroup]="loginForm">
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                <label class="form-label text-primary green-text fw-bold">Email</label>
+                <input
+                  title="email"
+                  type="email"
+                  class="form-control"
+                  formControlName="username"
+                  placeholder="Inserisci la tua email"
+                  required
+                />
+              </div>
+  
+              <!-- Password input -->
+              <div class="form-outline mb-4">
+                <label class="form-label text-primary green-text fw-bold">Password</label>
+                <input
+                  title="password"
+                  type="password"
+                  class="form-control"
+                  formControlName="password"
+                  placeholder="Inserisci la tua password"
+                  required
+                />
+              </div>
+  
+              <!-- Error message -->
+              <div class="text-danger text-center mb-3" *ngIf="loginError">
+                {{ loginError }}
+              </div>
+  
+              <!-- Submit button -->
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary btn-block mb-4 w-100">
+                  Accedi
+                </button>
+              </div>
+            </form>
+  
+            <!-- Link to register -->
+            <div class="text-center mt-3">
+              Non sei registrato?
+              <a [routerLink]="['/register']" class="underline-on-hover">
+                <span class="fw-bold">Clicca qui</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>

@@ -1,0 +1,7 @@
+<div class="card mt-2 w-100" *ifAuthenticated>
+    <div class="card-body">
+      <h5 class="card-title">Zona con CAP {{ zona!.cap}}</h5>
+      <app-delete-zona [id]="zona!.id!"></app-delete-zona>
+      <button class="btn btn-lg btn-outline-primary w-50" (click)="dettaglio()">Zona Places</button>
+    </div>
+</div>

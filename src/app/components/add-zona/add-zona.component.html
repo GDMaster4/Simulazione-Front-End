@@ -1,0 +1,27 @@
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-Titolo" id="modal-basic-Titolo">Add Zona</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form [formGroup]="zoneForm">
+			<div class="mb-3">
+                <label for="cap">CAP</label>
+                <div class="input-group">
+                    <input
+                        id="cap"
+                        class="form-control"
+                        name="cap"
+                        formControlName="cap"
+                        type="text"
+                        [maxlength]="5"
+                    />
+                </div>
+            </div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark w-100" (click)="addZone()">Save</button>
+	</div>
+</ng-template>
+<button class="btn btn-lg btn-outline-primary w-100" (click)="open(content)">Add Zona</button>

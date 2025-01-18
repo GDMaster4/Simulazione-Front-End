@@ -1,0 +1,31 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <!-- Header con sfondo viola e testo bianco -->
+            <div class="card card-custom p-4">
+                <div class="header-custom p-3 mb-4">
+                    <h2 class="text-center text-white">Dettagli Profilo</h2>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <!-- Righe di dettagli -->
+                        <div class="form-group d-flex align-items-center justify-content-between">
+                            <label for="nomeTit" class="font-weight-bold purple-text">Nome</label>
+                            <p class="nomeTit mb-0 text-dark">{{(currentUser$ | async)!.firstName}}</p>
+                        </div>
+                        <div class="form-group d-flex align-items-center justify-content-between">
+                            <label for="cognTit" class="font-weight-bold purple-text">Cognome</label>
+                            <p class="cognTit mb-0 text-dark">{{(currentUser$ | async)!.lastName}}</p>
+                        </div>
+                        <div class="form-group d-flex align-items-center justify-content-between">
+                            <label for="email" class="font-weight-bold purple-text">Email</label>
+                            <p class="email mb-0 text-dark">{{(currentUser$ | async)!.email}}</p>
+                        </div>
+                    </div>
+                    <!-- Componente per modificare la password -->
+                    <app-mod-passw></app-mod-passw>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
