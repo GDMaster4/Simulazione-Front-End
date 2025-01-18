@@ -6,6 +6,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { PlacesComponent } from './pages/places/places.component';
 import { placesFiltersResolver } from './resolvers/places-filters.resolver';
 import { PlacessResolver } from './resolvers/places.resolver';
+import { ProfiloComponent } from './pages/profilo/profilo.component';
 
 const routes: Routes = [
   {
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path:"register",
     component:RegisterComponent
+  },
+  {
+    path:"profilo",
+    component:ProfiloComponent
   },
   {
     path:"home",
