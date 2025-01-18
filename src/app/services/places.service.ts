@@ -59,7 +59,7 @@ export class PlacesService
         this._places$.next(tmp);
         this.listByZone(this.filtri!)
       }, error => {
-        this.toastSrv.error(error);
+        this.toastSrv.error("Error in removing place");
       });
   }
 
@@ -70,7 +70,7 @@ export class PlacesService
         this._places$.next([]);
         this.listByZone({zoneId:id});
       }, error => {
-        this.toastSrv.error(error);
+        this.toastSrv.error("Error in removing all places");
       });
   }
 }

@@ -57,7 +57,7 @@ export class ZoneService
         this._zones$.next(tmp);
         this.fetch();
       },error => {
-        this.toastSrv.error(error);
+        this.toastSrv.error("Error in adding zone");
       });
   }
   
@@ -72,7 +72,7 @@ export class ZoneService
         this._zones$.next(tmp);
         this.fetch();
       }, error => {
-        this.toastSrv.error(error);
+        this.toastSrv.error("There are places in this zone");
       });
   }
 }
