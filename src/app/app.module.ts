@@ -25,6 +25,7 @@ import { ZonaComponent } from './components/zona/zona.component';
 import { DeleteZonaComponent } from './components/delete-zona/delete-zona.component';
 import { PlacesComponent } from './pages/places/places.component';
 import { AddZonaComponent } from './components/add-zona/add-zona.component';
+import { ModPasswComponent } from './components/mod-passw/mod-passw.component';
 registerLocaleData(localeIt, 'it-IT');
 
 @NgModule({
@@ -42,6 +43,7 @@ registerLocaleData(localeIt, 'it-IT');
     DeleteZonaComponent,
     PlacesComponent,
     AddZonaComponent,
+    ModPasswComponent,
   ],
   imports: [
     BrowserAnimationsModule,

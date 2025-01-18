@@ -60,8 +60,16 @@ export class AuthService
       .subscribe(user=>this._currentUser$.next(user));
   }
   
-  fetchUsers()
+  modPassw(nuovaPassw:string)
   {
-    return this.http.get<User[]>("api/user/users");
+    this.http.patch<User>(`${enviroment.apiUrl}/user/password`,{nuovaPassw:nuovaPassw})
+      .subscribe(updated => {
+        let tmp = structuredClone(this._currentUser$.value);
+        tmp = updated;
+        this._currentUser$.next(tmp);
+        this.fetchUser();
+      },error => {
+        this.toatstSrv.error(error);
+      }); 
   }
 }

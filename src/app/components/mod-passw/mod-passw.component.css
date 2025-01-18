@@ -1,0 +1,12 @@
+.btn-dark-green {
+    background-color: #06d117; /* Viola scuro per il bottone */
+    color: #ffffff; /* Testo bianco */
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-dark-green:hover {
+    background-color: #076604; /* Viola ancora più scuro al passaggio del mouse */
+}
