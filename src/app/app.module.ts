@@ -3,10 +3,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { NgbDateAdapter, NgbDateParserFormatter, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import localeIt from '@angular/common/locales/it';
 import { registerLocaleData } from '@angular/common';
-import { DateAdapter, DateParserFormatter } from './utils/Datepicker-adapter';
 import { NgModule } from '@angular/core';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
@@ -60,14 +59,6 @@ registerLocaleData(localeIt, 'it-IT');
     NgbModule
   ],
   providers: [
-    {
-      provide: NgbDateAdapter,
-      useClass: DateAdapter
-    },
-    {
-      provide: NgbDateParserFormatter,
-      useClass: DateParserFormatter
-    },
     {provide: HTTP_INTERCEPTORS, useClass:AuthInterceptor, multi:true},
     ZoneService,
     PlacesService
