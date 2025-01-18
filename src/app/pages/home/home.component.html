@@ -7,16 +7,16 @@
         <div class="col-12">
             <h2 class="mb-4">Zones</h2>
             <ng-container *ngIf="(zone$ | async) as zones">
-                <div *ngIf="zones.length; else noEvents">
+                <div *ngIf="zones.length; else noZones">
                     <div *ngFor="let zona of zones" class="card mb-3">
                         <app-zona
                         [zona]="zona"
                         ></app-zona>
                     </div>
                 </div>
-                <ng-template #noEvents>
+                <ng-template #noZones>
                     <div class="alert alert-warning" role="alert">
-                        No events found.
+                        No zones found.
                     </div>
                 </ng-template>
             </ng-container>

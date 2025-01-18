@@ -3,7 +3,7 @@
         <div class="col-12">
             <h2 class="mb-4">Places</h2>
             <ng-container *ngIf="(places$ | async) as places">
-                <div *ngIf="places.length; else noEvents">
+                <div *ngIf="places.length; else noPlaces">
                     <app-delete-all [id]="id"></app-delete-all>
                     <div *ngFor="let place of places" class="card mb-3">
                         <app-place
@@ -11,9 +11,9 @@
                         ></app-place>
                     </div>
                 </div>
-                <ng-template #noEvents>
+                <ng-template #noPlaces>
                     <div class="alert alert-warning" role="alert">
-                        No events found.
+                        No places found.
                     </div>
                 </ng-template>
             </ng-container>
