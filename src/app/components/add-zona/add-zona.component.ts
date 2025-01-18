@@ -66,8 +66,7 @@ export class AddZonaComponent implements OnInit,OnDestroy
     if(this.zoneForm.valid)
     {
       const {cap}=this.zoneForm.value;
-      const zoneId=this.zoneSrv.add(cap!);
-      this.placeSrv.add(zoneId,cap!);
+      this.zoneSrv.add(cap!);
       this.modalService.dismissAll();
       this.zoneForm.reset();
     }

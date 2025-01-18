@@ -49,18 +49,15 @@ export class ZoneService
     const newCap={
       cap:cap
     }
-    let newId:string="";
     this.http.post<Zone>(`${enviroment.apiUrl}/zone/add`, newCap)
       .subscribe(addZone => {
         const tmp = structuredClone(this._zones$.value);
         tmp.push(addZone);
-        newId=addZone.id;
         this._zones$.next(tmp);
         this.fetch();
       },error => {
         this.toastSrv.error(error);
-      }); 
-    return newId;
+      });
   }
   
   remove(id:string)
