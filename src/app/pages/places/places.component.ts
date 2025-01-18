@@ -17,6 +17,7 @@ export class PlacesComponent
   protected destroyed$ = new Subject<void>();
 
   places$= this.placeSrv.places$;
+  id:string="";
 
   constructor( protected router: Router, protected placeSrv:PlacesService,
     protected authSrv:AuthService,protected activatedRoute: ActivatedRoute)
@@ -31,6 +32,12 @@ export class PlacesComponent
   
   ngOnInit(): void
   {
+    this.places$.subscribe(places => {
+      if (places && places.length > 0) {
+        const firstPlaceZoneId = places[0].zone.id;
+        this.id = firstPlaceZoneId;
+      }
+    });
     this.updateQueryParams$
     .pipe(
       takeUntil(this.destroyed$),
