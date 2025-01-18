@@ -27,6 +27,7 @@ import { PlacesComponent } from './pages/places/places.component';
 import { AddZonaComponent } from './components/add-zona/add-zona.component';
 import { ModPasswComponent } from './components/mod-passw/mod-passw.component';
 import { ProfiloComponent } from './pages/profilo/profilo.component';
+import { CapsComponent } from './pages/caps/caps.component';
 registerLocaleData(localeIt, 'it-IT');
 
 @NgModule({
@@ -46,6 +47,7 @@ registerLocaleData(localeIt, 'it-IT');
     AddZonaComponent,
     ModPasswComponent,
     ProfiloComponent,
+    CapsComponent,
   ],
   imports: [
     BrowserAnimationsModule,

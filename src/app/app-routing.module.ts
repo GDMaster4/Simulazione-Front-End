@@ -7,6 +7,7 @@ import { PlacesComponent } from './pages/places/places.component';
 import { placesFiltersResolver } from './resolvers/places-filters.resolver';
 import { PlacessResolver } from './resolvers/places.resolver';
 import { ProfiloComponent } from './pages/profilo/profilo.component';
+import { CapsComponent } from './pages/caps/caps.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,10 @@ const routes: Routes = [
       places:PlacessResolver
     },
     runGuardsAndResolvers:"paramsOrQueryParamsChange"
+  },
+  {
+    path:"caps",
+    component:CapsComponent
   },
 ];
 

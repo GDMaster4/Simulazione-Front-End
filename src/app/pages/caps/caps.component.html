@@ -1,0 +1,23 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="mb-4">Caps</h2>
+            <ng-container *ngIf="(caps$ | async) as caps">
+                <div *ngIf="caps.length; else noCaps">
+                    <div *ngFor="let cap of caps" class="card mb-3">
+                        <div class="card mt-2 w-100" *ifAuthenticated>
+                            <div class="card-body">
+                              <h5 class="card-title">{{cap}}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ng-template #noCaps>
+                    <div class="alert alert-warning" role="alert">
+                        No caps found.
+                    </div>
+                </ng-template>
+            </ng-container>
+        </div>
+    </div>
+</div>
