@@ -18,14 +18,21 @@ export class PlacesService
 {
   private _places$= new BehaviorSubject<Place[]>([]);
   places$=this._places$.asObservable();
+  private filtri:PlacesFilters | null=null;
 
   constructor(protected http:HttpClient, protected zoneSrv:ZoneService,
     protected toastSrv:ToastrService)
   {
     this.zoneSrv.zones$
       .subscribe(zones=>{
-        if (zones) {
-          zones.forEach(zone=>this.listByZone({zoneId:zone.id}));
+        if (zones)
+        {
+          zones.forEach(zone=>{
+            this.filtri = {
+              zoneId:zone.id
+            };
+            this.listByZone({zoneId:zone.id})
+          });
         }
         else {
           this._places$.next([]);
@@ -50,6 +57,7 @@ export class PlacesService
         const index = this._places$.value.findIndex(place => place.id === deleted.id);
         tmp.splice(index,1);
         this._places$.next(tmp);
+        this.listByZone(this.filtri!)
       }, error => {
         this.toastSrv.error(error);
       });
@@ -59,10 +67,7 @@ export class PlacesService
   {    
     this.http.delete<Place>(`${enviroment.apiUrl}/place/${id}/all`)
       .subscribe(deleted => {
-        // const tmp = structuredClone(this._places$.value);
-        // const index = this._places$.value.findIndex(place => place.id === deleted.id);
-        // tmp.splice(index,1);
-        // this._places$.next(tmp);
+        this._places$.next([]);
         this.listByZone({zoneId:id});
       }, error => {
         this.toastSrv.error(error);

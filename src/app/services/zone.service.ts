@@ -33,6 +33,7 @@ export class ZoneService
 
   fetch()
   {
+    this._zones$.next([]);
     this.http.get<Zone[]>(`${enviroment.apiUrl}/zone`)
       .subscribe(zones=>{
         this._zones$.next(zones);
