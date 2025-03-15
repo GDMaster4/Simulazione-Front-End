@@ -5,5 +5,5 @@ export interface User
   lastName: string;
   email: string;
   password: string;
-  fullname?:string;
+  fullName?:string;
 }
